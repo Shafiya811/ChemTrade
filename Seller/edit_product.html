@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ChemTrade Seller Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">ChemTrade</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="seller.html">Dashboard</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="add_product.html">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="orders.html">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="customers.html">Customers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="account.html">Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../homePage/index.html">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Options</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="add_product.html" id="addProductBtn">Add Product</a></li>
+            <li class="list-group-item"><a href="#" id="editProductBtn">Edit Product</a></li>
+            <li class="list-group-item"><a href="delete_product.html" id="deleteProductBtn">Delete Product</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+   <div class="col-md-9">
+      <div class="card" id="editProductSection">
+        <div class="card-body">
+          <h5 class="card-title">Edit Product</h5>
+          <div class="form-group">
+            <label for="editProductSelect">Select Product:</label>
+            <select class="form-control" id="editProductSelect">
+              <option value="">Select a product</option>
+              <!-- Dummy product options will be populated here -->
+            </select>
+          </div>
+          <form>
+            <div class="form-group">
+              <label for="editProductName">Product Name</label>
+              <input type="text" class="form-control" id="editProductName">
+            </div>
+            <div class="form-group">
+              <label for="editProductCategory">Product Category</label>
+              <input type="text" class="form-control" id="editProductCategory">
+            </div>
+            <div class="form-group">
+              <label for="editProductPrice">Product Price</label>
+              <input type="text" class="form-control" id="editProductPrice">
+            </div>
+            <div class="form-group">
+              <label for="editProductImageUrl">Image URL</label>
+              <input type="text" class="form-control" id="editProductImageUrl">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $("#editProductBtn").click(function(){
+      $("#editProductSection").show();
+    });
+
+    // Populate select options for editing products
+    function populateProductOptions() {
+      // Dummy data
+      const dummyData = [
+        { id: 1, name: "Product 1" },
+        { id: 2, name: "Product 2" },
+        { id: 3, name: "Product 3" },
+      ];
+
+      // Populate options for editing products
+      const editProductSelect = $("#editProductSelect");
+      dummyData.forEach(product => {
+        editProductSelect.append(`<option value="${product.id}">${product.name}</option>`);
+      });
+    }
+
+    populateProductOptions();
+  });
+</script>
+
+</body>
+</html>

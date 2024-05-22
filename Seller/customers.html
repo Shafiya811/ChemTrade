@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ChemTrade Seller Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">ChemTrade</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="seller.html">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="add_product.html">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="orders.html">Orders</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="customers.html">Customers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="account.html">Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../homePage/index.html">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Options</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="#" >View Customers</a></li>
+            <li class="list-group-item"><a href="contact_customers.html" >Contact Customers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<div class="col-md-9">
+      <h2>View Customers</h2>
+  
+  <!-- Search Bar -->
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search customers">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+    </div>
+  </div>
+
+  <!-- Customers Table -->
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Customer ID</th>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Total Orders</th>
+        <th>Total Spent</th>
+      </tr>
+    </thead>
+    <tbody id="customerTableBody">
+      <!-- Customer rows will be dynamically generated here -->
+    </tbody>
+  </table>
+  
+  <!-- Pagination -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination" id="pagination">
+      <!-- Pagination links will be dynamically generated here -->
+    </ul>
+  </nav>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Sample customer data (replace with actual data from your backend)
+  const customersData = [
+    { id: 1, name: "Arun", email: "john@example.com", phone: "123-456-7890", totalOrders: 5, totalSpent: "500.00" },
+    { id: 2, name: "Khan", email: "jane@example.com", phone: "987-654-3210", totalOrders: 3, totalSpent: "300.00" },
+    { id: 3, name: "Rohit", email: "michael@example.com", phone: "111-222-3333", totalOrders: 7, totalSpent: "700.00" },
+    // More customers...
+  ];
+
+  // Function to display customers based on current page and search query
+  function displayCustomers(pageNumber, searchTerm) {
+    const pageSize = 10;
+    const startIndex = (pageNumber - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const filteredCustomers = customersData.filter(customer => {
+      return customer.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+             customer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+             customer.phone.includes(searchTerm);
+    });
+    const paginatedCustomers = filteredCustomers.slice(startIndex, endIndex);
+    
+    // Clear previous data
+    $("#customerTableBody").empty();
+    
+    // Populate table with customers
+    paginatedCustomers.forEach(customer => {
+      $("#customerTableBody").append(`
+        <tr>
+          <td>${customer.id}</td>
+          <td>${customer.name}</td>
+          <td>${customer.email}</td>
+          <td>${customer.phone}</td>
+          <td>${customer.totalOrders}</td>
+          <td>Rs.${customer.totalSpent}</td>
+        </tr>
+      `);
+    });
+  }
+
+  // Function to generate pagination links
+  function generatePaginationLinks(pageNumber, totalCustomers) {
+    const pageSize = 10;
+    const totalPages = Math.ceil(totalCustomers / pageSize);
+    $("#pagination").empty();
+    for (let i = 1; i <= totalPages; i++) {
+      $("#pagination").append(`
+        <li class="page-item ${pageNumber === i ? 'active' : ''}">
+          <a class="page-link" href="#" data-page="${i}">${i}</a>
+        </li>
+      `);
+    }
+  }
+
+  $(document).ready(function(){
+    // Initial display
+    let currentPage = 1;
+    displayCustomers(currentPage, "");
+    generatePaginationLinks(currentPage, customersData.length);
+    
+    // Search button click event
+    $("#searchButton").click(function() {
+      const searchTerm = $("#searchInput").val();
+      displayCustomers(currentPage, searchTerm);
+    });
+
+    // Pagination link click event
+    $("#pagination").on("click", ".page-link", function() {
+      const pageNumber = parseInt($(this).attr("data-page"));
+      currentPage = pageNumber;
+      const searchTerm = $("#searchInput").val();
+      displayCustomers(pageNumber, searchTerm);
+      generatePaginationLinks(pageNumber, customersData.length);
+    });
+  });
+</script>
+
+</body>
+</html>
