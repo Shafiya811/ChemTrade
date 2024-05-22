@@ -34,7 +34,7 @@
     // Check username and password
     if (username === "xyz@gmail.com" && password === "hafiya#811") {
         // Redirect to dashboard page
-        window.location.href = "Seller/Seller.html";
+        window.location.href = "../Seller/Seller.html";
     } else {
         document.getElementById("message").innerText = "Invalid username or password";
     }
