@@ -15,6 +15,8 @@ nodemon
 ```
 This command will start your server with nodemon, which will automatically restart the server when changes are detected in your files.
 
+NOTE: Before running the server, make sure to update the MongoURI inside the `server.js` file with your MongoDB connection string.
+
 ### Ready to Go
 
 You're all set! Now you can utilize the live server.
