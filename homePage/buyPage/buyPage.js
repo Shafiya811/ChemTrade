@@ -8,7 +8,7 @@ toggle_btn.addEventListener("change", () => {
     console.log(`checked`);
     document.body.classList.add("dark-mode");
     searchBar.style.backgroundColor = "#f2f2f2";
-    card.style.color= "black";
+    card.style.color = "black";
   } else {
     console.log(`unchecked`);
     document.body.classList.remove("dark-mode");
@@ -46,12 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
       price: "100",
       seller: "xyz",
     },
-    {   name: "Chemical 7",
-    imgURL: "../../images/chemimg.jpg",
-    quantity: "1Kg",
-    price: "100",
-    seller: "xyz",
-  },
+    {
+      name: "Chemical 7",
+      imgURL: "../../images/chemimg.jpg",
+      quantity: "1Kg",
+      price: "100",
+      seller: "xyz",
+    },
     {
       name: "Chemical 4",
       type: "packaging",
@@ -73,8 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add more chemicals as needed
   ];
-  
-// didnot add yet may include in future
+
+  // didnot add yet may include in future
   // Function to display chemicals based on filter
   function displayChemicals(filter) {
     const chemicalsContainer = document.getElementById("chemicals");

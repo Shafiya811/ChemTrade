@@ -37,7 +37,7 @@ inputs.forEach((input) => {
   input.addEventListener("blur", blurFunc);
 });
 
-window.onload = function() {
+window.onload = function () {
   // const introSection = document.querySelector('.intro-section');
   const searchBoxHtml = `
   <div class="search-box">
@@ -52,7 +52,7 @@ window.onload = function() {
     const logoDiv = document.querySelector('header .logo');
     // const searchBar = document.querySelector('.search-box');
     if (window.innerWidth <= 980) {
-  
+
       if (scrollY >= 60) {
         if (searchBar) {
           searchBar.remove();
@@ -60,28 +60,25 @@ window.onload = function() {
       } else {
         // Check if the search box doesn't already exist before adding it
         if (!searchBar) {
-          logoDiv.insertAdjacentHTML('afterend',searchBoxHtml);
+          logoDiv.insertAdjacentHTML('afterend', searchBoxHtml);
           // document.querySelector('.header').insertAdjacentHTML('beforeend', searchBoxHtml);
         }
       }
-    } else if (window.innerWidth > 980 && !searchBar)  {
+    } else if (window.innerWidth > 980 && !searchBar) {
       logoDiv.insertAdjacentHTML('afterend', searchBoxHtml);
     }
-    
+  });
 
-    
-  }); 
-
-  window.addEventListener('change' , () => {
+  window.addEventListener('change', () => {
     const searchBar = document.querySelector('.search-box');
     const logoDiv = document.querySelector('header .logo');
     if (window.innerWidth > 980 && !searchBar) {
-      logoDiv.insertAdjacentHTML('afterend',searchBoxHtml);
+      logoDiv.insertAdjacentHTML('afterend', searchBoxHtml);
     }
   })
 }
 
-window.onchange = function() {
+window.onchange = function () {
   const searchBar = document.querySelector('.search-box');
   const logoDiv = document.querySelector('header .logo');
   const searchBoxHtml = `
@@ -92,98 +89,97 @@ window.onchange = function() {
     </form>
   </div>
 `;
-  window.addEventListener('change' ,() => {
+  window.addEventListener('change', () => {
     if (window.innerWidth > 980 && !searchBar) {
       logoDiv.insertAdjacentHTML('afterend', searchBoxHtml);
     }
   })
 }
 
-  // Smooth scrolling function
-  function smoothScroll(target, duration, offset = 0) {
-    var targetElement = document.querySelector(target);
-    var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset + offset;
-    var startPosition = window.pageYOffset;
-    var distance = targetPosition - startPosition;
-    var startTime = null;
+// Smooth scrolling function
+function smoothScroll(target, duration, offset = 0) {
+  var targetElement = document.querySelector(target);
+  var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset + offset;
+  var startPosition = window.pageYOffset;
+  var distance = targetPosition - startPosition;
+  var startTime = null;
 
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      var timeElapsed = currentTime - startTime;
-      var run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return c / 2 * t * t + b;
-      t--;
-      return -c / 2 * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animation);
+  function animation(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    var timeElapsed = currentTime - startTime;
+    var run = ease(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animation);
   }
 
-  // Click event listeners for navigation links
-  document.querySelectorAll('header nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      var target = this.getAttribute('href');
-      var offset = target === '#home' ? 50 : 0; // Adjust offset as needed
-      smoothScroll(target, 1000, offset); // Adjust duration as needed
-    });
+  function ease(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+  }
+  requestAnimationFrame(animation);
+}
+
+// Click event listeners for navigation links
+document.querySelectorAll('header nav a').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    var target = this.getAttribute('href');
+    var offset = target === '#home' ? 50 : 0; // Adjust offset as needed
+    smoothScroll(target, 1000, offset); // Adjust duration as needed
   });
+});
 
-  //todo To know which nav link is active
+//todo To know which nav link is active
 
-  // Get all anchor links in the header
-  var navLinks = document.querySelectorAll('.header ul li a');
+// Get all anchor links in the header
+var navLinks = document.querySelectorAll('.header ul li a');
 
-  // Add event listeners to each link
-  navLinks.forEach(nav => {
-    nav.addEventListener('click', function() {
-      // Remove 'active' class from all links
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-      });
-      // Add 'active' class to the clicked link
-      this.classList.add('active');
-    });
-  });
-
-  // Function to highlight active section in navigation
-  function highlightActiveSection() {
-    var sections = document.querySelectorAll('main > div[id]');
-    var navLinks = document.querySelectorAll('.header ul li a');
-
-    // Reset all navigation links to inactive
+// Add event listeners to each link
+navLinks.forEach(nav => {
+  nav.addEventListener('click', function () {
+    // Remove 'active' class from all links
     navLinks.forEach(link => {
       link.classList.remove('active');
     });
+    // Add 'active' class to the clicked link
+    this.classList.add('active');
+  });
+});
 
-    // Check if Home section is in view
-    var homeSection = document.getElementById('home');
-    var homeLink = document.querySelector('.header ul li a[href="#home"]');
-    var homeRect = homeSection.getBoundingClientRect();
-    if (homeRect.top >= 0 && homeRect.bottom <= window.innerHeight) {
-      homeLink.classList.add('active');
-      return;
-    }
+// Function to highlight active section in navigation
+function highlightActiveSection() {
+  var sections = document.querySelectorAll('main > div[id]');
+  var navLinks = document.querySelectorAll('.header ul li a');
 
-    // Check other sections
-    sections.forEach(section => {
-      var sectionRect = section.getBoundingClientRect();
-      if (sectionRect.top <= window.innerHeight / 2 && sectionRect.bottom >= window.innerHeight / 2) {
-        var id = section.getAttribute('id');
-        var correspondingLink = document.querySelector('.header ul li a[href="#' + id + '"]');
-        correspondingLink.classList.add('active');
-      }
-    });
+  // Reset all navigation links to inactive
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+
+  // Check if Home section is in view
+  var homeSection = document.getElementById('home');
+  var homeLink = document.querySelector('.header ul li a[href="#home"]');
+  var homeRect = homeSection.getBoundingClientRect();
+  if (homeRect.top >= 0 && homeRect.bottom <= window.innerHeight) {
+    homeLink.classList.add('active');
+    return;
   }
 
-  // Highlight active section on initial page load
-  highlightActiveSection();
+  // Check other sections
+  sections.forEach(section => {
+    var sectionRect = section.getBoundingClientRect();
+    if (sectionRect.top <= window.innerHeight / 2 && sectionRect.bottom >= window.innerHeight / 2) {
+      var id = section.getAttribute('id');
+      var correspondingLink = document.querySelector('.header ul li a[href="#' + id + '"]');
+      correspondingLink.classList.add('active');
+    }
+  });
+}
 
-  // Listen for scroll events to highlight active section
-  window.addEventListener('scroll', highlightActiveSection);
+// Highlight active section on initial page load
+highlightActiveSection();
+
+// Listen for scroll events to highlight active section
+window.addEventListener('scroll', highlightActiveSection);

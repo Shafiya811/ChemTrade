@@ -1,4 +1,4 @@
-document.getElementById("loginForm").addEventListener("submit", async function (event) {
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
     const email = document.getElementById("email").value;
@@ -10,7 +10,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     }
 
     try {
-        const response = await fetch('http://localhost:5000/api/auth/login', {
+        const response = await fetch('http://localhost:5001/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,8 +21,11 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         const data = await response.json();
         if (response.ok) {
             alert('Login successful!');
-            // where do want to redirect?
-            // window.location.href = "  ";
+            if (data.role === 'buyer') {
+                window.location.href = "../Buyer/buyer.html";
+            } else if (data.role === 'seller') {
+                window.location.href = "../Seller/Seller.html";
+            }
         } else {
             alert(data.message);
         }

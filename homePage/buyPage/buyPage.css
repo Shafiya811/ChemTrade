@@ -1,43 +1,46 @@
+/* buy page */
+.card {
+  background-color: #BACD92;
+}
 
-
-  /* buy page */
-  .card {
-    background-color: #BACD92;
-  }
-
-  main {
-    margin-top: 160px; /* Default margin */
-  }
-
-
+main {
+  margin-top: 160px;
+  /* Default margin */
+}
 
 @media(max-width: 390px) {
-    main{
-      margin-top: 660px; /* Adjust margin dynamically based on viewport height */
+  main {
+    margin-top: 660px;
+    /* Adjust margin dynamically based on viewport height */
+  }
 
-    }
-    #chemCard{
-      height: 200px;
-      margin-left : 20px;
-      margin-right: 20px;   
-    }
-    #chemCard img{
-      height: 100px;
-    }
+  #chemCard {
+    height: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  #chemCard img {
+    height: 100px;
+  }
 }
 
 @media(max-width: 700px) {
   header {
-    margin-bottom: 20px ;
+    margin-bottom: 20px;
   }
-  main{
-    margin-top: 550px; }
-  #chemCard{
+
+  main {
+    margin-top: 550px;
+  }
+
+  #chemCard {
     height: 200px;
-    margin-left : 20px;
-    margin-right: 20px;   
+    margin-left: 20px;
+    margin-right: 20px;
   }
-  #chemCard img{
+
+  #chemCard img {
     height: 100px;
   }
 }
