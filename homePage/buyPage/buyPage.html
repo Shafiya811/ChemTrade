@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="icon" href="../../images/logo.png">
+  <link rel="stylesheet" href="./buyPage.css">
+  <link rel="stylesheet" href="../homePage.css">
+
+  <title>ChemTrade</title>
+</head>
+
+<body>
+  <header class="header">
+    <input type="checkbox" name="" id="check">
+    <div class="logo">
+      <img src="../../images/logo.png" alt="Image">
+      <h1>ChemTrade</h1>
+    </div>
+    <div class="search-box">
+      <form action="">
+        <input type="text" name="search" id="search" placeholder="Search for the products here ..">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html">About</a></li>
+      <li><a href="#" class="active">Buy</a></li>
+      <li><a href="../../loginPage/login.html">Sell</a></li><!--Login page before entering to sellPage-->
+      <li><a href="../../signupPage/index.html">Signup</a></li>
+      <li><a href="../../login.html">Login</a></li>
+      <li><a href="../index.html">Contact</a></li>
+    </ul>
+    <div class="toggle-btn">
+      <input type="checkbox" id="checkbox">
+      <label for="checkbox" class="toggle-label">
+        <span class="toggle-ball"></span>
+      </label>
+    </div>
+    <div class="menu">
+      <label for="check">
+        <i class="fa fa-bars"></i>
+      </label>
+    </div>
+
+  </header>
+  <main style="padding-top: 0px;">
+    <!-- will include filter/search function -->
+    <div class="container mt-4">
+      <div class="row chemicalCard " id="chemicals">
+        <!-- Chemicals will be dynamically added here -->
+      </div>
+    </div>
+
+  </main>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="./buyPage.js"></script>
+</body>
+
+</html>
