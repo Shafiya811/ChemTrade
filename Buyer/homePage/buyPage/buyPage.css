@@ -1,0 +1,118 @@
+  :root {
+    --bg-main: #f5f5fd;
+    --bg-primary: #212529;
+    --color-input: #212529;
+  }
+
+  /* buy page */
+  .card {
+    background-color: #BACD92;
+  }
+
+  .header {
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -ms-transition: all .1s linear;
+    -o-transition: all .1s linear;
+}
+
+  .header .logo h1 {
+    margin-top: 0.5rem;
+  }
+
+  .header ul {
+    padding-top: .7rem;
+  }
+
+  .header ul li a {
+    text-decoration: none;
+    font-weight: 510;
+  }
+
+  .header ul li a:hover {
+    color: var(--bg-primary);
+  }
+
+
+  main {
+    margin-top: 160px; /* Default margin */
+
+  }
+
+  @media (max-width: 990px) {
+    main {
+      margin-top: 80px;
+    }
+  }
+  
+  @media (max-width: 769px) {
+    main {
+      margin-top: 270px;
+    }
+  }
+
+
+  
+  @media (max-width: 700px) {
+    main {
+      margin-top: 60px;
+    }
+  }
+
+  @media (max-width : 578px) {
+    main {
+      margin-top : 550px;
+    }
+
+    .menu {
+      margin-top: .6rem;
+    }
+
+    .toggle-btn {
+      padding-top: .5rem;
+    }
+  }
+  
+  @media (max-width: 390px) {
+    main {
+      margin-top: 600px;
+    }
+
+    main .container {
+      margin-top: 120px;
+    }
+
+    .toggle-btn {
+      padding-top: 1.3rem;
+    }
+
+    .menu {
+      margin-top: .6rem;
+    }
+  }  
+@media(max-width: 390px) {
+
+    #chemCard{
+      height: 200px;
+      margin-left : 20px;
+      margin-right: 20px;   
+    }
+    #chemCard img{
+      height: 100px;
+    }
+}
+
+@media(max-width: 700px) {
+  header {
+    margin-bottom: 20px ;
+  }
+  #chemCard{
+    height: 200px;
+    margin-left : 20px;
+    margin-right: 20px;   
+  }
+  #chemCard img{
+    height: 100px;
+  }
+}

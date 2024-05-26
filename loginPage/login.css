@@ -1,0 +1,71 @@
+body {
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('imgs/chemicals.jpg'); /* Set background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+  }
+  
+  .container {
+    background-color: rgb(255, 255, 255); /* Set a semi-transparent white background for the form container */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-image: url('');
+  }
+  
+    .header-login{
+       margin-left: 35%;
+    }
+   
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .btn-login{
+     margin-left: 0;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      font-family:'Times New Roman', Times, serif;
+    }
+    
+    button:hover {
+      background-color: #075d0b;
+    }
+    
+    .google-signin {
+      text-align: center;
+      margin-top: 20px;
+      font-family:'Times New Roman', Times, serif;
+    }
+    
+    h1 {
+      margin-left: 80px;
+      font-family:'Times New Roman', Times, serif;
+    }

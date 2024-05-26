@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="../images/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="buyer.css" />
+    <link rel="stylesheet" href="../homePage/homePage.css" />
+    <title>Cart Page</title>
+  </head>
+  <body>
+    <header class="header">
+      <input type="checkbox" name="" id = "check">
+      <div class="logo">
+        <img src="../images/logo.png" alt="Image" />
+        <h1>ChemTrade</h1>
+      </div>
+      <ul>
+        <li><a href="buyer.html">Chemical</a></li>
+        <li><a href="" class="active">ViewCart</a></li>
+        <li><a href="orders.html">Orders</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a href="../homePage/index.html">Logout</a></li>
+      </ul>
+      <div class="toggle-btn">
+        <input type="checkbox" id="checkbox" />
+        <label for="checkbox" class="toggle-label">
+          <span class="toggle-ball"></span>
+        </label>
+      </div>
+      <div class="menu">
+        <label for="check">
+          <i class="fa fa-bars"></i>
+        </label>
+      </div>
+    </header>
+
+    <div class="container mt-5" id="cartList"></div>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./buyer.js"></script>
+  </body>
+</html>
